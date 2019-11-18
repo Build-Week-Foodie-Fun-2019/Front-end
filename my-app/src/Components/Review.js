@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
-function Restaurant() {
-  const [rest, setRest] = useState({
-    name: "",
+function Review() {
+  const [review, setReview] = useState({
+    restaurant_name: "",
     id: "",
     type_of_cuisine: "",
-    location: "",
-    hours_of_op: "",
-    rating: "",
-    reviews: "",
+    menu_item_name: "",
+    photo_of_menu_item: "",
+    price: "",
+    rrating_of_menu_item: "",
     photos: ""
   });
 
   const FormChange = e => {
-    setRest({
-      ...rest,
+    setReview({
+      ...review,
       [e.target.member]: e.target.value
     });
   };
@@ -24,22 +23,26 @@ function Restaurant() {
   };
 
   return (
-    <div className="Rest">
-      <h1>Where Did You Eat At?</h1>
+    <div className="Review">
+      <h1>Write a Review</h1>
       <form onSubmit={handleSubmit}>
         <label>
+            {""}
+            Name of Restaurant
           <input
             type="text"
-            name="name"
-            placeholder="Enter your Name"
+            restaurant_name="name"
+            placeholder="Enter Here"
             onChange={FormChange}
           />
         </label>
         <label>
+            {""}
+            Enter your ID
           <input
             type="text"
             name="id"
-            placeholder="Enter your ID"
+            placeholder="ID Here"
             onChange={FormChange}
           />
         </label>
@@ -68,18 +71,33 @@ function Restaurant() {
           />
         </label>
         <label>
+          {""}
+          Add a Photo of your Food!
+          <input type="file" name="photos" accept="image" />
+        </label>
+        <label>
           {" "}
-          Business Hours
+          Menu Item
           <input
             type="text"
-            name=" hours_of_op"
-            placeholder="Enter Business Hours"
+            menu_item_name="menu_item_name"
+            placeholder="What'd you have to eat?"
             onChange={FormChange}
           />
         </label>
         <label>
           {" "}
-          Overall Rating
+          How Much was your Meal?
+          <input
+            type="text"
+            price="price"
+            placeholder="Price"
+            onChange={FormChange}
+          />
+        </label>
+        <label>
+          {" "}
+          Rating of Menu Item
           <select>
             <option></option>
             <option>⭐</option>
@@ -92,18 +110,10 @@ function Restaurant() {
         <label>
           {" "}
           Add a Review Here
-          <textarea rows="1" cols="25" name="reviews"/>
+          <textarea rows="1" cols="25" name="reviews" />
         </label>
-        <label>
-          {""}
-          Add an Image  
-          <input type="file" name="photos" accept="image" />
-        </label>
-        <Link to="/review">
-            <button>Write a Review</button>
-        </Link>
       </form>
     </div>
   );
 }
-export default Restaurant;
+export default Review;
