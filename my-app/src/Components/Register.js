@@ -21,7 +21,7 @@ export default function Register() {
   };
 
   return (
-    <div className="Login">
+    <div className="Register">
       <h1>Stay Updated, Subscribe to Foodies!</h1>
       <form onSubmit={handleSubmit}>
         <label>

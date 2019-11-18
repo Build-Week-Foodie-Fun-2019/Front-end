@@ -19,27 +19,28 @@ function Login() {
 
   return (
     <div className="Login">
-      <h1>Login Here</h1>
+      <h1>Capture Your 
+      Food Adventures</h1>
       <form onSubmit={handleSubmit}>
         <label>
-          <input
+          <input className="adv"
             type="text"
             name="username"
-            placeholder="Enter your Username"
-            onChange={stateFormChange}
-          />
-        </label>
-        <label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Enter your Password"
+            placeholder="Enter Username"
             onChange={stateFormChange}
           />
         </label>
         <Link to="/rest">
           <button>Login In Here</button>
         </Link>
+        <label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter Password"
+            onChange={stateFormChange}
+          />
+        </label>
         <Link to="/register">
           <button>New? Register Here</button>
         </Link>

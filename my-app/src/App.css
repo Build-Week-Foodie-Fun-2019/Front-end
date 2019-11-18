@@ -1,22 +1,16 @@
 .App {
   text-align: center;
 }
+.Login{
+  color: #D32323;
+  text-align: right;
+  padding: 10px;
+}
+.adv{
+background-color: #E7E4E4;
+border-radius: 3px;
 
-.App-logo {
-  height: 40vmin;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #09d3ac;
-}
+
