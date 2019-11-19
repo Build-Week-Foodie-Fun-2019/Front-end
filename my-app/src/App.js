@@ -12,11 +12,13 @@ import Account from "./Components/Account";
 function App() {
   return (
     <div className="App">
+      <Router>
       <Route exact path="/" component={FormikLogin} />
       <Route path="/register" component={FormikRegister} />
       <Route path="/rest" component={Restaurant} />
       <Route path="/review" component={Review}/>
       <Route path="/account" component={Account} />
+      </Router>
     </div>
   );
 }
