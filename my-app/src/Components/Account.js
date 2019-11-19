@@ -91,7 +91,7 @@ export default function Account() {
             onChange={stateFormChange}
           />
         </label>
-        <Link to="/">
+        <Link to="/rest">
           <button type="button">Take me back Home to Find more Yummies</button>
         </Link>
       </form>

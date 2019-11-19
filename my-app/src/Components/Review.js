@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link }from 'react-router-dom';
 
 function Review() {
   const [review, setReview] = useState({
@@ -104,7 +105,7 @@ function Review() {
             <option>⭐⭐</option>
             <option>⭐⭐⭐</option>
             <option>⭐⭐⭐⭐</option>
-            <option>⭐⭐⭐⭐⭐</option>
+            <option>⭐⭐⭐⭐⭐</option> 
           </select>
         </label>
         <label>
@@ -113,6 +114,9 @@ function Review() {
           <textarea rows="1" cols="25" name="reviews" />
         </label>
       </form>
+      <Link to ="/account">
+        <button>Account</button>
+      </Link>
     </div>
   );
 }
