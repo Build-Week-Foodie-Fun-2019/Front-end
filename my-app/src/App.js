@@ -6,6 +6,7 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Restaurant from "./Components/Restaurant";
 import Review from "./Components/Review";
+import Account from "./Components/Account";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/register" component={Register} />
       <Route path="/rest" component={Restaurant} />
       <Route path="/review" component={Review}/>
+      <Route path="/account" component={Account} />
     </div>
   );
 }
