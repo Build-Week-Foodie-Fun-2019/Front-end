@@ -4,7 +4,7 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { register } from "../store/auth/authActions";
-import { Link } from "react-router-dom";
+
 
 
 
@@ -36,13 +36,27 @@ import { Link } from "react-router-dom";
         <label>
           <Field
             type="password"
-            name="password"
-            placeholder="Enter your Password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
           />
         </label>
-        {touched.password && errors.password && (
-            <p className="error">{errors.password}</p>
+        {touched.confirmPassword && errors.confirmPassword && (
+            <p className="error">{errors.confirmPassword}</p>
           )}
+          <label>
+          <Field
+            type="email"
+            name="email"
+            placeholder="Enter email"
+          />
+        </label>
+        <label>
+          <Field
+            type="location"
+            name="location"
+            placeholder="Enter location"
+          />
+        </label>
         <button type="submit">{props.isLoading ? "..." : "Submit "}</button>
         </Form>
         <h3>
