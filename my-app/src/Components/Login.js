@@ -1,51 +1,75 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { login } from "../store/auth/authActions";
+import { Form, Field, withFormik } from "formik";
+import * as Yup from "yup";
 
-function Login() {
-  const [login, setLogin] = useState({
-    username: "",
-    password: ""
-  });
 
-  const stateFormChange = e => {
-    setLogin({
-      ...login,
-      [e.target.member]: e.target.value
-    });
-  };
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
 
+
+const Login = ({ errors, touched, ...props }) => {
   return (
     <div className="Login">
       <h1>Capture Your 
       Food Adventures</h1>
-      <form onSubmit={handleSubmit}>
+      <Form>
         <label>
-          <input className="adv"
+          <Field className="adv"
             type="text"
             name="username"
             placeholder="Enter Username"
-            onChange={stateFormChange}
           />
         </label>
-        <Link to="/rest">
-          <button>Login In Here</button>
-        </Link>
+        {touched.username && errors.username && (
+            <p className="error">{errors.username}</p>
+          )}
         <label>
-          <input
+          <Field
             type="password"
             name="password"
             placeholder="Enter Password"
-            onChange={stateFormChange}
           />
         </label>
+        {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
+        <button type="submit">{props.isLoading ? "Loading..." : "Login "}</button>
+        </Form>
+
         <Link to="/register">
           <button>New? Register Here</button>
         </Link>
-      </form>
     </div>
   );
 }
-export default Login;
+const FormikLogin = withFormik({
+  mapPropsToValues({ username, password }) {
+    return {
+      username: username || "",
+      password: password || "",
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required("Please enter your username."),
+    password: Yup.string().required("Please enter your password."),
+  }),
+
+  handleSubmit(values, { resetForm, props }) {
+    props.login(values, props.history);
+    resetForm();
+  },
+})(Login);
+
+const mapStateToProps = state => {
+  return {
+      isLoading: state.auth.isLoading,
+      error: state.auth.error,
+  }
+};
+
+export default connect(
+  mapStateToProps,
+  { login },
+)(FormikLogin);
