@@ -1,73 +1,94 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { Form, Field, withFormik } from "formik";
+import * as Yup from "yup";
+import { connect } from "react-redux";
+import { register } from "../store/auth/authActions";
+import { Link } from "react-router-dom";
 
-export default function Register() {
-  const [register, setRegister] = useState({
-    id: "",
-    username: "",
-    password: "",
-    users_location: "",
-    users_email: ""
-  });
 
-  const stateFormChange = e => {
-    setRegister({
-      ...register,
-      [e.target.member]: e.target.value
-    });
-  };
-  const handleSubmit = e => {
-    e.preventDefault();
-  };
 
+  const Register = ({ errors, touched, ...props }) => {
   return (
     <div className="Register">
       <h1>Stay Updated, Subscribe to Foodies!</h1>
-      <form onSubmit={handleSubmit}>
+      <Form>
         <label>
-          <input
-            type="text"
-            name="id"
-            placeholder="Enter your ID"
-            onChange={stateFormChange}
-          />
-        </label>
-        <label>
-          <input
+          <Field
             type="text"
             name="username"
             placeholder="Enter your Username"
-            onChange={stateFormChange}
           />
         </label>
+        {touched.username && errors.username && (
+            <p className="error">{errors.username}</p>
+          )}
         <label>
-          <input
+          <Field
             type="password"
             name="password"
             placeholder="Enter your Password"
-            onChange={stateFormChange}
           />
         </label>
+        {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
         <label>
-          <input
+          <Field
             type="password"
             name="password"
             placeholder="Enter your Password"
-            onChange={stateFormChange}
           />
         </label>
-        <label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your Email"
-            onChange={stateFormChange}
-          />
-        </label>
-        <Link to="/rest">
-          <button type="button">Join Now!</button>
-        </Link>
-      </form>
+        {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
+          )}
+        <button type="submit">{props.isLoading ? "..." : "Submit "}</button>
+        </Form>
+        <h3>
+          Already have an account? <Link to="/login">Sign In</Link> here.{" "}
+        </h3>
     </div>
   );
 }
+
+const FormikRegister = withFormik({
+  mapPropsToValues({ username, password, confirmPassword }) {
+    return {
+      username: username || "",
+      password: password || "",
+      confirmPassword: confirmPassword || "",
+    };
+  },
+
+  validationSchema: Yup.object().shape({
+    username: Yup.string().required("Please enter your username."),
+    password: Yup.string()
+      .min(6)
+      .required("Please enter at least 6 letters"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Passwords must match")
+      .required("Password confirm is required"),
+  }),
+
+  handleSubmit(values, { props }) {
+    let user = {
+      username: values.username,
+      password: values.password,
+    };
+
+    props.register(user, props.history);
+  },
+})(Register);
+
+const mapPropsToState = state => {
+  return {
+      isLoading: state.auth.isLoading,
+      error: state.auth.error,
+  }
+};
+
+export default connect(
+  mapPropsToState,
+  { register },
+)(FormikRegister);
