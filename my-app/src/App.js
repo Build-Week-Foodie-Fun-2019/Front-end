@@ -13,7 +13,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Route exact path="/" component={FormikLogin} />
+      <Route exact path="/login" component={FormikLogin} />
       <Route path="/register" component={FormikRegister} />
       <Route path="/rest" component={Restaurant} />
       <Route path="/review" component={Review}/>
