@@ -4,7 +4,26 @@ import * as Yup from "yup";
 import { connect } from "react-redux";
 import { addReview, getReviews, editReview } from "../store/reviews/reviewsActions";
 
+import styled from "styled-components";
 
+const LoginTitle = styled.h1`
+  color: #d80000;
+  text-align: center;
+`;
+
+const BtnDiv = styled.div`
+  text-align: center;
+  grid-column: 1 / span 2;
+`;
+
+const FormContainer = styled.div`
+  width: 880px;
+  margin: 0 auto;
+  padding: 30px;
+  font-weight: bold;
+  background: #ededed;
+  box-shadow: 2px, 2px, 10px, 10px #7c7c7c;
+`;
 
 function ReviewForm({ touched, errors, ...props }) {
   useEffect(() => {
