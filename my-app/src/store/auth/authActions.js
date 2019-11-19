@@ -16,7 +16,7 @@ export const login = (credentials, history) => {
   return dispatch => {
     dispatch({ type: LOGIN_START });
     axios
-      .post("", credentials)
+      .post("https://bw-foodie-fun.herokuapp.com/api/auth/login", credentials)
       .then(res => {
         dispatch({ type: LOGIN_SUCCESS, payload: res.data });
         // set token to local storage (review console logs for correct token path)
@@ -44,7 +44,7 @@ export const register = (user, history) => dispatch => {
   dispatch({ type: REGISTER_START });
 
   axios
-    .post("", user)
+    .post("https://bw-foodie-fun.herokuapp.com/api/auth/register", user)
     .then(res => {
       dispatch({ type: REGISTER_SUCCESS });
       history.push("/login");

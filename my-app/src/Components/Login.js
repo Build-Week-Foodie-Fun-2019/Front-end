@@ -17,23 +17,24 @@ const Login = ({ errors, touched, ...props }) => {
         <label>
           <Field className="adv"
             type="text"
-            name="username"
+            name="user_username"
             placeholder="Enter Username"
           />
         </label>
-        {touched.username && errors.username && (
-            <p className="error">{errors.username}</p>
+        {touched.user_username && errors.user_username && (
+            <p className="error">{errors.user_username}</p>
           )}
         <label>
           <Field
             type="password"
-            name="password"
+            name="user_password"
             placeholder="Enter Password"
           />
         </label>
-        {touched.password && errors.password && (
-            <p className="error">{errors.password}</p>
+        {touched.user_password && errors.user_password && (
+            <p className="error">{errors.user_password}</p>
           )}
+          
         <button type="submit">{props.isLoading ? "Loading..." : "Login "}</button>
         </Form>
 
@@ -44,16 +45,16 @@ const Login = ({ errors, touched, ...props }) => {
   );
 }
 const FormikLogin = withFormik({
-  mapPropsToValues({ username, password }) {
+  mapPropsToValues({ user_username, user_password }) {
     return {
-      username: username || "",
-      password: password || "",
+      user_username: user_username || "",
+      user_password: user_password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
-    username: Yup.string().required("Please enter your username."),
-    password: Yup.string().required("Please enter your password."),
+    user_username: Yup.string().required("Please enter your username."),
+    user_password: Yup.string().required("Please enter your password."),
   }),
 
   handleSubmit(values, { resetForm, props }) {
