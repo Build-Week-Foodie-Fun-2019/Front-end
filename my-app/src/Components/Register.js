@@ -63,7 +63,7 @@ import { register } from "../store/auth/authActions";
         {touched.user_location && errors.user_location && (
             <p className="error">{errors.user_location}</p>
           )}
-        <button type="submit">{props.isLoading ? "..." : "Submit "}</button>
+        <button type="submit">{props.isLoading ? "Loading..." : "Submit "}</button>
         </Form>
         <h3>
           Already have an account? <Link to="/login">Sign In</Link> here.{" "}

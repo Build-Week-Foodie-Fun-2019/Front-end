@@ -6,8 +6,9 @@ import { Switch, BrowserRouter as Router, Route, Redirect, } from "react-router-
 import FormikLogin from "./Components/Login";
 import FormikRegister from "./Components/Register";
 import Restaurant from "./Components/Restaurant";
-import Review from "./Components/Review";
+import ReviewForm from "./Components/ReviewForm";
 import Account from "./Components/Account";
+import Profile from "./Components/Profile";
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
       <Route exact path="/login" component={FormikLogin} />
       <Route path="/register" component={FormikRegister} />
       <Route path="/rest" component={Restaurant} />
-      <Route path="/review" component={Review}/>
+      <Route path="/profile/reviewform" component={ReviewForm}/>
       <Route path="/account" component={Account} />
+      <Route path="/profile" component={Profile}/>
       </Router>
     </div>
   );

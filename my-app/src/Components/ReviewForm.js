@@ -39,7 +39,7 @@ function ReviewForm({ touched, errors, ...props }) {
         <LoginTitle>
           {props.activeReview
             ? "Editing a review!"
-            : "Create a new review here!"}
+            : "Review your meal here!"}
         </LoginTitle>
 
         <Form className="review_form">
@@ -88,13 +88,13 @@ function ReviewForm({ touched, errors, ...props }) {
           </label>
           <label className="menu_item_photos">
             Photo of Order
-            <Field className="review_input" type="text" name="menu_item_photos" placeholder="Photo url" />
+            <Field className="review_input" type="text" name="menu_item_photos" placeholder="Insert url" />
             {touched.menu_item_photos && errors.menu_item_photos && (
               <p className="error">{errors.menu_item_photos}</p>
             )}
           </label>
           <label className="menu_item_review">
-            Other Comments
+            Review
             <Field component="textarea" name="menu_item_review" />
             {touched.menu_item_review && errors.menu_item_review && (
               <p className="error">{errors.comments}</p>
@@ -120,7 +120,7 @@ const FormikReviewForm = withFormik({
       menu_item_price: values.menu_item_price || "",
       menu_item_rating: values.menu_item_rating || "",
       menu_item_review: values.menu_item_review || "",
-      menu_item_photos: values.menu_item_photos || "https://cdn1.imggmi.com/uploads/2019/8/30/0529c2e79be5339e9cf244e25b84642d-full.png"
+      menu_item_photos: values.menu_item_photos || ""
     };
   },
 
