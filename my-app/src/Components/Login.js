@@ -12,8 +12,7 @@ import * as Yup from "yup";
 const Login = ({ errors, touched, ...props }) => {
   return (
     <div className="Login">
-      <h1>Capture Your 
-      Food Adventures</h1>
+      <h1>A New Food Adventure Awaits Welcome Back.</h1>
       {/* <img className="eat-img" src={eat}/> */}
       <Form>
         <label>

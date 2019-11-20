@@ -9,9 +9,9 @@ import { Link } from 'react-router-dom';
   const Register = ({ errors, touched, ...props }) => {
   return (
     <div className="Register">
-      <h1>Stay Updated, Subscribe to Foodies!</h1>
+      <h1> Capture Your Food Adventures</h1>
       <Form>
-        <label>
+        <label className="reg-user">
           <Field
             type="text"
             name="user_username"
@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
         {touched.user_username && errors.user_username && (
             <p className="error">{errors.user_username}</p>
           )}
-        <label>
+        <label className="reg-user">
           <Field
             type="password"
             name="user_password"
@@ -31,7 +31,7 @@ import { Link } from 'react-router-dom';
         {touched.user_password && errors.user_password && (
             <p className="error">{errors.user_password}</p>
           )}
-        <label>
+        <label className="reg-user">
           <Field
             type="password"
             name="confirmPassword"
@@ -41,7 +41,7 @@ import { Link } from 'react-router-dom';
         {touched.confirmPassword && errors.confirmPassword && (
             <p className="error">{errors.confirmPassword}</p>
           )}
-          <label>
+          <label className="reg-user">
           <Field
             type="email"
             name="user_email"
@@ -51,7 +51,7 @@ import { Link } from 'react-router-dom';
         {touched.user_email && errors.user_email && (
             <p className="error">{errors.user_email}</p>
           )}
-        <label>
+        <label className="reg-user">
           <Field
             type="location"
             name="user_location"
@@ -61,7 +61,7 @@ import { Link } from 'react-router-dom';
         {touched.user_location && errors.user_location && (
             <p className="error">{errors.user_location}</p>
           )}
-        <button type="submit">{props.isLoading ? "Loading..." : "Submit "}</button>
+        <button className="sub-btn" type="submit">{props.isLoading ? "Loading..." : "Submit "}</button>
         </Form>
         <h3>
           Already have an account? <Link to="/login">Sign In</Link> here.{" "}
