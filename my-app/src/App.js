@@ -1,21 +1,26 @@
 import React from "react";
+import PrivateRoute from "./utils/PrivateRoute";
 import "./App.css";
-import { Route } from "react-router-dom";
+import { Switch, BrowserRouter as Router, Route, Redirect, } from "react-router-dom";
 
-import Login from "./Components/Login";
-import Register from "./Components/Register";
+import FormikLogin from "./Components/Login";
+import FormikRegister from "./Components/Register";
 import Restaurant from "./Components/Restaurant";
-import Review from "./Components/Review";
+import ReviewForm from "./Components/ReviewForm";
 import Account from "./Components/Account";
+import Profile from "./Components/Profile";
 
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={Login} />
-      <Route path="/register" component={Register} />
+      <Router>
+      <Route exact path="/login" component={FormikLogin} />
+      <Route path="/register" component={FormikRegister} />
       <Route path="/rest" component={Restaurant} />
-      <Route path="/review" component={Review}/>
+      <Route path="/profile/reviewform" component={ReviewForm}/>
       <Route path="/account" component={Account} />
+      <Route path="/profile" component={Profile}/>
+      </Router>
     </div>
   );
 }
