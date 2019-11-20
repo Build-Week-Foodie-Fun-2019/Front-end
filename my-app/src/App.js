@@ -16,9 +16,7 @@ function App() {
       <Router>
       <Route exact path="/login" component={FormikLogin} />
       <Route path="/register" component={FormikRegister} />
-      <Route path="/rest" component={Restaurant} />
       <Route path="/profile/reviewform" component={ReviewForm}/>
-      <Route path="/account" component={Account} />
       <Route path="/profile" component={Profile}/>
       </Router>
     </div>
