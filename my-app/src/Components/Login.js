@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../store/auth/authActions";
 import { Form, Field, withFormik } from "formik";
+import eat from "./images/eat.jpg";
 import * as Yup from "yup";
 
 
@@ -13,9 +14,10 @@ const Login = ({ errors, touched, ...props }) => {
     <div className="Login">
       <h1>Capture Your 
       Food Adventures</h1>
+      {/* <img className="eat-img" src={eat}/> */}
       <Form>
         <label>
-          <Field className="adv"
+          <Field className="user-login"
             type="text"
             name="user_username"
             placeholder="Enter Username"
@@ -25,7 +27,7 @@ const Login = ({ errors, touched, ...props }) => {
             <p className="error">{errors.user_username}</p>
           )}
         <label>
-          <Field
+          <Field className="user-password"
             type="password"
             name="user_password"
             placeholder="Enter Password"
@@ -35,11 +37,11 @@ const Login = ({ errors, touched, ...props }) => {
             <p className="error">{errors.user_password}</p>
           )}
           
-        <button type="submit">{props.isLoading ? "Loading..." : "Login "}</button>
+        <button className="login-btn" type="submit">{props.isLoading ? "Loading..." : "Login "}</button>
         </Form>
 
         <Link to="/register">
-          <button>New? Register Here</button>
+          <button className="reg-btn">New? Register Here</button>
         </Link>
     </div>
   );

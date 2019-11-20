@@ -3,8 +3,7 @@ import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import { connect } from "react-redux";
 import { register } from "../store/auth/authActions";
-
-
+import { Link } from 'react-router-dom';
 
 
   const Register = ({ errors, touched, ...props }) => {
