@@ -30,7 +30,9 @@ function ReviewForm({ touched, errors, ...props }) {
     if (props.activeReview) {
       props.setValues(props.activeReview);
     }
-  }, [props.activeReview]);
+  }
+  // , [props.activeReview]
+  );
 
   return (
     <div>

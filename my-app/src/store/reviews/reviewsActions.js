@@ -29,7 +29,6 @@ export const addReview = (review, history) => dispatch => {
       history.push("/profile");
     })
     .catch(err => {
-
       dispatch({ type: ADD_REVIEW_FAILURE, payload: err.response });
     });
 };

@@ -37,7 +37,9 @@ const DetailContainer = styled.div`
 function SingleReview(props) {
     useEffect(() => {
       props.getReviews();
-    }, []);
+    }
+    , []
+    );
   
     const review = props.reviews.find(
       review => review.id === parseInt(props.match.params.id, 10),

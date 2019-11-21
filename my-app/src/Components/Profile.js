@@ -5,7 +5,7 @@ import { getReviews } from "../store/reviews/reviewsActions";
 import { NavLink } from "react-router-dom";
 
 //Components
-
+import FilterReview from "./Filter";
 
 
 
@@ -21,6 +21,9 @@ function Profile(props) {
         <NavLink to="/profile/reviewForm" className="addButton">
           <button className="addButton">Add Review</button>
         </NavLink>
+      </div>
+      <div className="content">
+        <FilterReview  reviews={props.reviews} />
       </div>
     </div>
   );
