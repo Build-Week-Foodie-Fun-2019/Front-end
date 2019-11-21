@@ -9,6 +9,7 @@ import Restaurant from "./Components/Restaurant";
 import ReviewForm from "./Components/ReviewForm";
 import Account from "./Components/Account";
 import Profile from "./Components/Profile";
+import ReviewList from "./Components/ReviewList";
 import SingleReview from "./Components/SingleReview";
 
 function App() {
@@ -38,6 +39,11 @@ function App() {
                                 exact
                                 path="/profile/reviewform"
                                 component={ReviewForm}
+                            />
+                            <PrivateRoute
+                                exact
+                                path="/profile/reviews"
+                                component={ReviewList}
                             />
 
                             {/* {default} */}
