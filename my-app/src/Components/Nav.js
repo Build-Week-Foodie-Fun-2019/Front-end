@@ -8,7 +8,7 @@ function Nav() {
         <Link to="/login">
           <button className="login-nav">Login</button>
         </Link>
-        <Link to="/regist">
+        <Link to="/register">
           <button className="reg-nav">Register</button>
         </Link>
       </nav>

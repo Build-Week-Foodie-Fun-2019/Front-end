@@ -21,8 +21,8 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Route path="/" component={Nav} />
         <Route exact path="/login" component={FormikLogin} />
-        <Route path="/nav" component={Nav} />
         <Route path="/register" component={FormikRegister} />
         <Route path="/profile/reviewform" component={ReviewForm} />
         <Route path="/profile" component={Profile} />
