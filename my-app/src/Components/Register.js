@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
-import eat from "./images/eat.jpg";
+import newimage from "./images/newimage.jpg";
 import { connect } from "react-redux";
 import { register } from "../store/auth/authActions";
 import { Link } from "react-router-dom";
@@ -10,7 +10,7 @@ const Register = ({ errors, touched, ...props }) => {
   return (
     <>
       <span>
-        <img className="eat-img" src={eat} />
+        <img className="eat-img" src={newimage} />
       </span>
       <div className="Register">
         <h1> Capture Your Food Adventures</h1>

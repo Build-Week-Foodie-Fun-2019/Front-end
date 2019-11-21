@@ -3,17 +3,20 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../store/auth/authActions";
 import { Form, Field, withFormik } from "formik";
-import eat from "./images/eat.jpg";
+import newimage from "./images/newimage.jpg";
 import * as Yup from "yup";
+import "./Login.css";
 
 const Login = ({ errors, touched, ...props }) => {
   return (
-    <>
-      <span>
-        <img className="eat-img" src={eat} />
-      </span>
+    <div className="loginContainer">
+      <div>
+        <img className="eat-img" src={newimage} />
+      </div>
       <div className="Login">
-        <h1>A New Food Adventure Awaits Welcome Back.</h1>
+        <h1 className="login-title">
+          A New Food Adventure Awaits Welcome Back.
+        </h1>
         <Form>
           <label>
             <Field
@@ -47,7 +50,7 @@ const Login = ({ errors, touched, ...props }) => {
           <button className="reg-btn">New? Register Here</button>
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 const FormikLogin = withFormik({
