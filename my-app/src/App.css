@@ -49,9 +49,10 @@
 }
 .eat-img {
   display: flex;
-  width: 100%;
+  width: 50%;
   height: auto;
   margin: 0 auto;
+  object-fit: fill;
 }
 .Register {
   position: absolute;
