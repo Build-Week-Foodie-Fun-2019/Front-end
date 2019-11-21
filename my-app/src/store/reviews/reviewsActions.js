@@ -21,7 +21,7 @@ import {
 export const addReview = (review, history) => dispatch => {
   dispatch({ type: ADD_REVIEW_START });
   axiosWithAuth()
-    .post("/auth/api", review)
+    .post("/api/auth", review)
     .then(res => {
       dispatch({ type: ADD_REVIEW_SUCCESS, payload: review });
       // Re-route to main display
@@ -40,7 +40,7 @@ export const deleteReview = (id, history) => {
       type: DELETE_REVIEW_START,
     });
     axiosWithAuth()
-      .delete(`/auth/api/${id}`)
+      .delete(`/api/auth/${id}`)
       .then(res => {
         dispatch({
           type: DELETE_REVIEW_SUCCESS,
@@ -68,7 +68,7 @@ export const editReview = (review, history, id) => {
   return dispatch => {
     dispatch({ type: EDIT_REVIEW_START });
     axiosWithAuth()
-      .put(`/auth/api/${id}`, review)
+      .put(`/api/auth/${id}`, review)
       .then(res => {
         dispatch({ type: EDIT_REVIEW_SUCCESS, payload: res.data });
         history.push("/profile");
@@ -85,7 +85,7 @@ export const getReviews = () => {
   return dispatch => {
     dispatch({ type: GET_REVIEWS_START });
     axiosWithAuth()
-      .get("/auth/api")
+      .get("/api/auth")
       .then(res => {
         dispatch({
           type: GET_REVIEWS_SUCCESS,
