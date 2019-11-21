@@ -22,9 +22,9 @@ function ReviewList(props) {
               <ReviewCard
                 key={item.id}
                 id={item.id}
-                resName={item["restaurant_name"]}
+                resName={item["menu_item_restaurant"]}
                 itemName={item["menu_item_name"]}
-                itemImgUrl={item["menu_item_photos"]}
+                itemImgUrl={item["menu_item_photo"]}
                 foodRating={item["menu_item_rating"]}
                 price={item.menu_item_price}
               />

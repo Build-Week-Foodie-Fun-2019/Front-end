@@ -17,7 +17,7 @@ function Profile(props) {
   return (
     <div className="Profile-page">
       <div className="Profile-Info">
-        <h2 className="welcome-text">Hello, {props.username}</h2>
+        <h2 className="welcome-text">Hello, {props.user_username}</h2>
         <NavLink to="/profile/reviewForm" className="addButton">
           <button className="addButton">Add Review</button>
         </NavLink>

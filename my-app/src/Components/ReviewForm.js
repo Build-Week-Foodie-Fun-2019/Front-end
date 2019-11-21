@@ -43,20 +43,20 @@ function ReviewForm({ touched, errors, ...props }) {
         </LoginTitle>
 
         <Form className="review_form">
-          <label className="restaurant_name">
+          <label className="menu_item_restaurant">
             Restaurant
-            <Field className="review_input" type="text" name="restaurant_name" />
-            {touched.restaurant_name && errors.restaurant_name && (
-              <p className="error">{errors.restaurant_name}</p>
+            <Field className="review_input" type="text" name="menu_item_restaurant" />
+            {touched.menu_item_restaurant && errors.menu_item_restaurant && (
+              <p className="error">{errors.menu_item_restaurant}</p>
             )}
           </label>
-          <label className="restaurant_type">
+          {/* <label className="restaurant_type">
             Restaurant Type
             <Field className="review_input" type="text" name="restaurant_cuisine" />
             {touched.restaurant_cuisine && errors.restaurant_cuisine && (
               <p className="error">{errors.restaurant_cuisine}</p>
             )}
-          </label>
+          </label> */}
           <label className="item_name">
             Food Item
             <Field className="review_input" type="text" name="menu_item_name" />
@@ -86,11 +86,11 @@ function ReviewForm({ touched, errors, ...props }) {
               <p className="error">{errors.menu_item_rating}</p>
             )}
           </label>
-          <label className="menu_item_photos">
+          <label className="menu_item_photo">
             Photo of Order
-            <Field className="review_input" type="text" name="menu_item_photos" placeholder="Insert url" />
-            {touched.menu_item_photos && errors.menu_item_photos && (
-              <p className="error">{errors.menu_item_photos}</p>
+            <Field className="review_input" type="text" name="menu_item_photo" placeholder="Insert url" />
+            {touched.menu_item_photo && errors.menu_item_photo && (
+              <p className="error">{errors.menu_item_photo}</p>
             )}
           </label>
           <label className="menu_item_review">
@@ -113,27 +113,25 @@ function ReviewForm({ touched, errors, ...props }) {
 const FormikReviewForm = withFormik({
   mapPropsToValues(values) {
     return {
-      user_id: parseInt(localStorage.getItem("user_id")),
-      restaurant_name: values.restaurant_name || "",
-      restaurant_cuisine: values.restaurant_cuisine || "",
+      //user_id: parseInt(localStorage.getItem("user_id")),
+      menu_item_restaurant: values.menu_item_restaurant || "",
       menu_item_name: values.menu_item_name || "",
       menu_item_price: values.menu_item_price || "",
       menu_item_rating: values.menu_item_rating || "",
       menu_item_review: values.menu_item_review || "",
-      menu_item_photos: values.menu_item_photos || ""
+      menu_item_photo: values.menu_item_photo || ""
     };
   },
 
   validationSchema: Yup.object().shape({
-    restaurant_name: Yup.string().required(
+    menu_item_restaurant: Yup.string().required(
       "Restaurant name is a required field.",
     ),
-    restaurant_cuisine: Yup.string(),
     menu_item_name: Yup.string().required("Food item is a required field."),
     menu_item_price: Yup.number().required("Price is a required field."),
     menu_item_rating: Yup.number().required("Rating is a required field."),
     menu_item_review: Yup.string(),
-    menu_item_photos: Yup.string()
+    menu_item_photo: Yup.string()
       .url()
       .required("Photo of order is a required field."),
   }),

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
 import eat from "./images/eat.jpg";
@@ -125,7 +125,10 @@ const mapPropsToState = state => {
   return {
     isLoading: state.auth.isLoading,
     error: state.auth.error
-  };
+  }
 };
 
-export default connect(mapPropsToState, { register })(FormikRegister);
+export default connect(
+  mapPropsToState, 
+  { register }
+  )(FormikRegister);
