@@ -1,77 +1,95 @@
 import React, { useState } from "react";
 import { Form, Field, withFormik } from "formik";
 import * as Yup from "yup";
+import eat from "./images/eat.jpg";
 import { connect } from "react-redux";
 import { register } from "../store/auth/authActions";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-
-  const Register = ({ errors, touched, ...props }) => {
+const Register = ({ errors, touched, ...props }) => {
   return (
-    <div className="Register">
-      <h1> Capture Your Food Adventures</h1>
-      <Form>
-        <label className="reg-user">
-          <Field
-            type="text"
-            name="user_username"
-            placeholder="Enter your Username"
-          />
-        </label>
-        {touched.user_username && errors.user_username && (
+    <>
+      <span>
+        <img className="eat-img" src={eat} />
+      </span>
+      <div className="Register">
+        <h1> Capture Your Food Adventures</h1>
+        <Form>
+          <label>
+            <Field
+              className="reg-user"
+              type="text"
+              name="user_username"
+              placeholder="Enter your Username"
+            />
+          </label>
+          {touched.user_username && errors.user_username && (
             <p className="error">{errors.user_username}</p>
           )}
-        <label className="reg-user">
-          <Field
-            type="password"
-            name="user_password"
-            placeholder="Enter your Password"
-          />
-        </label>
-        {touched.user_password && errors.user_password && (
+          <label>
+            <Field
+              className="reg-user"
+              type="password"
+              name="user_password"
+              placeholder="Enter your Password"
+            />
+          </label>
+          {touched.user_password && errors.user_password && (
             <p className="error">{errors.user_password}</p>
           )}
-        <label className="reg-user">
-          <Field
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-          />
-        </label>
-        {touched.confirmPassword && errors.confirmPassword && (
+          <label>
+            <Field
+              className="reg-user"
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+            />
+          </label>
+          {touched.confirmPassword && errors.confirmPassword && (
             <p className="error">{errors.confirmPassword}</p>
           )}
-          <label className="reg-user">
-          <Field
-            type="email"
-            name="user_email"
-            placeholder="Enter email"
-          />
-        </label>
-        {touched.user_email && errors.user_email && (
+          <label>
+            <Field
+              className="reg-user"
+              type="email"
+              name="user_email"
+              placeholder="Enter email"
+            />
+          </label>
+          {touched.user_email && errors.user_email && (
             <p className="error">{errors.user_email}</p>
           )}
-        <label className="reg-user">
-          <Field
-            type="location"
-            name="user_location"
-            placeholder="Enter location"
-          />
-        </label>
-        {touched.user_location && errors.user_location && (
+          <label>
+            <Field
+              className="reg-user"
+              type="location"
+              name="user_location"
+              placeholder="Enter location"
+            />
+          </label>
+          {touched.user_location && errors.user_location && (
             <p className="error">{errors.user_location}</p>
           )}
-        <button className="sub-btn" type="submit">{props.isLoading ? "Loading..." : "Submit "}</button>
+          <button className="sub-btn" type="submit">
+            {props.isLoading ? "Loading..." : "Submit "}
+          </button>
         </Form>
         <h3>
           Already have an account? <Link to="/login">Sign In</Link> here.{" "}
         </h3>
-    </div>
+      </div>
+    </>
   );
-}
+};
 
 const FormikRegister = withFormik({
-  mapPropsToValues({ user_username, user_password, confirmPassword, user_email, user_location }) {
+  mapPropsToValues({
+    user_username,
+    user_password,
+    confirmPassword,
+    user_email,
+    user_location
+  }) {
     return {
       user_username: user_username || "",
       user_password: user_password || "",
@@ -88,7 +106,7 @@ const FormikRegister = withFormik({
       .required("Please enter at least 6 letters"),
     confirmPassword: Yup.string()
       .oneOf([Yup.ref("user_password"), null], "Passwords must match")
-      .required("Password confirm is required"),
+      .required("Password confirm is required")
   }),
 
   handleSubmit(values, { props }) {
@@ -100,17 +118,14 @@ const FormikRegister = withFormik({
     };
 
     props.register(user, props.history);
-  },
+  }
 })(Register);
 
 const mapPropsToState = state => {
   return {
-      isLoading: state.auth.isLoading,
-      error: state.auth.error,
-  }
+    isLoading: state.auth.isLoading,
+    error: state.auth.error
+  };
 };
 
-export default connect(
-  mapPropsToState,
-  { register },
-)(FormikRegister);
+export default connect(mapPropsToState, { register })(FormikRegister);
